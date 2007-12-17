@@ -27,7 +27,6 @@ Requires: 	tetex-latex >= 1.0.7
 Requires:	tetex-dvips >= 1.0.7
 BuildRequires:	tetex-dvips
 BuildRequires:	tetex-latex ghostscript
-BuildRoot:	%{_tmppath}/ltx-%{version}-root
 BuildArchitectures:	noarch
 %define _requires_exceptions Win32
 
