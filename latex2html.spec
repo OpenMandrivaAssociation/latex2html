@@ -1,17 +1,17 @@
 %define name	latex2html
-%define version	2002
-%define rel 13
+%define version	2008
+%define rel 1
 %define compactversion	2002-2-1
 
 Name: 		%{name}
 Summary: 	LaTeX to HTML converter
 Version: 	%{version}
 Release: 	%mkrel %{rel}
-License: 	GPL
+License: 	GPLv2+
 Group: 		Publishing
 URL: 		http://www.latex2html.org
-Source: 	http://saftsack.fs.uni-bayreuth.de/~latex2ht/current/%{name}-%{compactversion}.tar.bz2
-Patch0:		%{name}-%{version}-gsfonts.patch
+Source: 	http://saftsack.fs.uni-bayreuth.de/~latex2ht/current/%{name}-%{version}.tar.gz
+Patch0:		%{name}-2002-gsfonts.patch
 Patch1:		%{name}-%{compactversion}-path.patch
 Patch2:		%{name}-perlversion.patch
 Patch3:		%{name}-doc-address.patch
@@ -39,7 +39,7 @@ Elaborate perl program to convert latex documents to html, using LaTeX
 to process images and equations.  
 
 %prep
-%setup -q -n %{name}-%{compactversion}
+%setup -q 
 %patch0 -p1 -b .gsfonts
 %patch1 -p1
 %patch2 -p1 -b .perl
@@ -58,7 +58,7 @@ TMP=/var/tmp ./configure \
 	--prefix=%{_prefix} \
 	--shlibdir=%{latex2htmldir} \
 	--with-initex="%{_bindir}/tex -ini" \
-	--with-rgb=/usr/X11R6/lib/X11/rgb.txt
+	--with-rgb=/usr/share/X11/rgb.txt
 %make
 
 %install
