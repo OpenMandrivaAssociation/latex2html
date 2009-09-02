@@ -1,6 +1,6 @@
 %define name	latex2html
 %define version	2008
-%define rel 1
+%define rel 2
 %define compactversion	2002-2-1
 
 Name: 		%{name}
