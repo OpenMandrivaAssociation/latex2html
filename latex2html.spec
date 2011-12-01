@@ -63,54 +63,54 @@ TMP=/var/tmp ./configure \
 %make
 
 %install
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 # custom "make install" so paths are proper in the perl programs
 
-mkdir -p $RPM_BUILD_ROOT%{_bindir} \
-	$RPM_BUILD_ROOT%{latex2htmldir}
+mkdir -p %{buildroot}%{_bindir} \
+	%{buildroot}%{latex2htmldir}
 
-install -m 755 latex2html $RPM_BUILD_ROOT%{_bindir}
-install -m 755 pstoimg $RPM_BUILD_ROOT%{_bindir}
-install -m 755 texexpand $RPM_BUILD_ROOT%{_bindir}
+install -m 755 latex2html %{buildroot}%{_bindir}
+install -m 755 pstoimg %{buildroot}%{_bindir}
+install -m 755 texexpand %{buildroot}%{_bindir}
 
-cp -avRf IndicTeX-HTML $RPM_BUILD_ROOT%{latex2htmldir}/
-cp -avRf L2hos.pm $RPM_BUILD_ROOT%{latex2htmldir}/
-cp -avRf L2hos $RPM_BUILD_ROOT%{latex2htmldir}/
-cp -avRf XyMTeX-HTML $RPM_BUILD_ROOT%{latex2htmldir}/
-cp -avRf cweb2html $RPM_BUILD_ROOT%{latex2htmldir}/
-cp -avRf docs $RPM_BUILD_ROOT%{latex2htmldir}/
-cp -avRf example $RPM_BUILD_ROOT%{latex2htmldir}/
-cp -avRf foilhtml $RPM_BUILD_ROOT%{latex2htmldir}/
-cp -avRf icons $RPM_BUILD_ROOT%{latex2htmldir}/
-cp -avRf makeseg $RPM_BUILD_ROOT%{latex2htmldir}/
-cp -avRf styles $RPM_BUILD_ROOT%{latex2htmldir}/
-cp -avRf texinputs $RPM_BUILD_ROOT%{latex2htmldir}/
-cp -avRf versions $RPM_BUILD_ROOT%{latex2htmldir}/
+cp -avRf IndicTeX-HTML %{buildroot}%{latex2htmldir}/
+cp -avRf L2hos.pm %{buildroot}%{latex2htmldir}/
+cp -avRf L2hos %{buildroot}%{latex2htmldir}/
+cp -avRf XyMTeX-HTML %{buildroot}%{latex2htmldir}/
+cp -avRf cweb2html %{buildroot}%{latex2htmldir}/
+cp -avRf docs %{buildroot}%{latex2htmldir}/
+cp -avRf example %{buildroot}%{latex2htmldir}/
+cp -avRf foilhtml %{buildroot}%{latex2htmldir}/
+cp -avRf icons %{buildroot}%{latex2htmldir}/
+cp -avRf makeseg %{buildroot}%{latex2htmldir}/
+cp -avRf styles %{buildroot}%{latex2htmldir}/
+cp -avRf texinputs %{buildroot}%{latex2htmldir}/
+cp -avRf versions %{buildroot}%{latex2htmldir}/
 
 cp -avRf cfgcache.pm dot.latex2html-init l2hconf.pm makemap readme.hthtml \
-	$RPM_BUILD_ROOT%{latex2htmldir}/
+	%{buildroot}%{latex2htmldir}/
 
-mkdir -p $RPM_BUILD_ROOT%{_datadir}/texmf/tex/latex/html
-cp -avRf texinputs/* $RPM_BUILD_ROOT%{_datadir}/texmf/tex/latex/html
+mkdir -p %{buildroot}%{_datadir}/texmf/tex/latex/html
+cp -avRf texinputs/* %{buildroot}%{_datadir}/texmf/tex/latex/html
 
-mkdir -p $RPM_BUILD_ROOT%{_defaultdocdir}/%{name}-%{version}
+mkdir -p %{buildroot}%{_defaultdocdir}/%{name}-%{version}
 cp -avRf Changes FAQ MANIFEST README readme.hthtml TODO BUGS INSTALL \
 	dot.latex2html-init example \
-		$RPM_BUILD_ROOT%{_defaultdocdir}/%{name}-%{version}
+		%{buildroot}%{_defaultdocdir}/%{name}-%{version}
 
 # fix perl path in a few places:
-perl -pi -e 's#/usr/local/bin/perl#%{__perl}#' $RPM_BUILD_ROOT%{_prefix}/lib/latex2html/cweb2html/cweb2html
-perl -pi -e 's#/usr/local/bin/perl#%{__perl}#' $RPM_BUILD_ROOT%{_prefix}/lib/latex2html/makeseg/makeseg
-perl -pi -e 's#/usr/local/bin/perl#%{__perl}#' $RPM_BUILD_ROOT%{latex2htmldir}/makemap
+perl -pi -e 's#/usr/local/bin/perl#%{__perl}#' %{buildroot}%{_prefix}/lib/latex2html/cweb2html/cweb2html
+perl -pi -e 's#/usr/local/bin/perl#%{__perl}#' %{buildroot}%{_prefix}/lib/latex2html/makeseg/makeseg
+perl -pi -e 's#/usr/local/bin/perl#%{__perl}#' %{buildroot}%{latex2htmldir}/makemap
 
 # fix some installation path
 perl -pi -e "s#$RPM_BUILD_DIR/%{name}-%{compactversion}#%{latex2htmldir}#" \
-	$RPM_BUILD_ROOT%{latex2htmldir}/cfgcache.pm
+	%{buildroot}%{latex2htmldir}/cfgcache.pm
 perl -pi -e "s#%{_datadir}/lib/latex2html#%{latex2htmldir}#" \
-	$RPM_BUILD_ROOT%{latex2htmldir}/cfgcache.pm
+	%{buildroot}%{latex2htmldir}/cfgcache.pm
 
 # these files are already included in tetex
-(cd $RPM_BUILD_ROOT%{_datadir}/texmf/tex/latex/html
+(cd %{buildroot}%{_datadir}/texmf/tex/latex/html
 rm -f floatflt.ins latin9.def url.sty
 )
 
@@ -122,10 +122,10 @@ latex manual
 latex manual
 latex manual
 dvipdf manual.dvi
-install -m 644 manual.pdf $RPM_BUILD_ROOT%{_defaultdocdir}/%{name}-%{version})
+install -m 644 manual.pdf %{buildroot}%{_defaultdocdir}/%{name}-%{version})
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 %post
 [ -x /usr/bin/texhash ] && /usr/bin/env - /usr/bin/texhash 2> /dev/null
