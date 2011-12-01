@@ -104,7 +104,7 @@ perl -pi -e 's#/usr/local/bin/perl#%{__perl}#' %{buildroot}%{_prefix}/lib/latex2
 perl -pi -e 's#/usr/local/bin/perl#%{__perl}#' %{buildroot}%{latex2htmldir}/makemap
 
 # fix some installation path
-perl -pi -e "s#$RPM_BUILD_DIR/%{name}-%{compactversion}#%{latex2htmldir}#" \
+perl -pi -e "s#%{_builddir}/%{name}-%{compactversion}#%{latex2htmldir}#" \
 	%{buildroot}%{latex2htmldir}/cfgcache.pm
 perl -pi -e "s#%{_datadir}/lib/latex2html#%{latex2htmldir}#" \
 	%{buildroot}%{latex2htmldir}/cfgcache.pm
