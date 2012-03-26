@@ -3,7 +3,7 @@
 Name: 		latex2html
 Summary: 	LaTeX to HTML converter
 Version: 	2008
-Release: 	5
+Release: 	6
 License: 	GPLv2+
 Group: 		Publishing
 URL: 		http://www.latex2html.org
@@ -26,6 +26,7 @@ Requires:	tetex-dvips >= 1.0.7
 BuildRequires:	tetex-dvips
 BuildRequires:	tetex-latex ghostscript
 BuildRequires:	ghostscript-dvipdf
+BuildRequires:	netpbm
 BuildArchitectures:	noarch
 
 %define latex2htmldir %{_prefix}/lib/%{name}
