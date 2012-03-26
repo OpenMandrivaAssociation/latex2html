@@ -1,12 +1,9 @@
-%define name	latex2html
-%define version	2008
-%define rel 4
 %define compactversion	2002-2-1
 
-Name: 		%{name}
+Name: 		latex2html
 Summary: 	LaTeX to HTML converter
-Version: 	%{version}
-Release: 	%mkrel %{rel}
+Version: 	2008
+Release: 	5
 License: 	GPLv2+
 Group: 		Publishing
 URL: 		http://www.latex2html.org
@@ -19,6 +16,7 @@ Patch4:		%{name}-pdfoutput.patch
 Patch5:		%{name}-gs-stderr.patch
 Patch6:		%{name}-perlcall.patch
 Patch7:		%{name}-htmladdimg.patch
+Patch8:		latex2html-2008-perl-5.14.patch
 Requires:	ghostscript >= 6.50
 Requires:	giftrans
 Requires:	netpbm
@@ -28,11 +26,8 @@ Requires:	tetex-dvips >= 1.0.7
 BuildRequires:	tetex-dvips
 BuildRequires:	tetex-latex ghostscript
 BuildRequires:	ghostscript-dvipdf
-BuildRoot:	%{_tmppath}/ltx-%{version}-root
 BuildArchitectures:	noarch
-%define _requires_exceptions Win32
 
-%define graphic_format	png	# use "gif" or "png"
 %define latex2htmldir %{_prefix}/lib/%{name}
 
 %description
@@ -49,6 +44,7 @@ to process images and equations.
 %patch5 -p1 -b .stderr
 %patch6 -p1 
 %patch7 -p1
+%patch8 -p1 -b .p514~
 
 %build
 TMP=/var/tmp ./configure \
@@ -102,6 +98,13 @@ cp -avRf Changes FAQ MANIFEST README readme.hthtml TODO BUGS INSTALL \
 perl -pi -e 's#/usr/local/bin/perl#%{__perl}#' %{buildroot}%{_prefix}/lib/latex2html/cweb2html/cweb2html
 perl -pi -e 's#/usr/local/bin/perl#%{__perl}#' %{buildroot}%{_prefix}/lib/latex2html/makeseg/makeseg
 perl -pi -e 's#/usr/local/bin/perl#%{__perl}#' %{buildroot}%{latex2htmldir}/makemap
+
+# remove stuff we don't need (but that fills up the harddisk
+# and adds dependencies anyway)
+rm -f	%buildroot%_prefix/lib/latex2html/L2hos/Win32.pm \
+	%buildroot%_prefix/lib/latex2html/L2hos/DOS.pm \
+	%buildroot%_prefix/lib/latex2html/L2hos/Mac.pm \
+	%buildroot%_prefix/lib/latex2html/L2hos/OS2.pm
 
 # fix some installation path
 perl -pi -e "s#%{_builddir}/%{name}-%{compactversion}#%{latex2htmldir}#" \
