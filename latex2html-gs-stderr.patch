@@ -1,0 +1,11 @@
+--- latex2html-2002-2-1/config/config.pl.stderr	2005-03-13 18:41:31.111395133 +0100
++++ latex2html-2002-2-1/config/config.pl	2005-03-13 18:40:48.614674580 +0100
+@@ -1043,7 +1043,7 @@
+     my $gs_version;
+ 
+     my $flag = 0;
+-    unless(open(GS,"$gs -h |")) {
++    unless(open(GS,"$gs -h 2>&1|")) {
+       $opt{'have_pstoimg'} = 0;
+       logit("Error: could not execute $gs\n");
+       &warn_no_images();

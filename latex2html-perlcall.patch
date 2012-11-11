@@ -1,0 +1,16 @@
+--- latex2html-2002-2-1/cweb2html/makemake.pl.shell	2005-03-13 19:11:22.777112713 +0100
++++ latex2html-2002-2-1/cweb2html/makemake.pl	2005-03-13 19:11:40.099411763 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/local/bin/perl
++#!/usr/bin/perl
+ 
+ ################################################################################
+ # Copyright 1998-1999 by Jens Lippmann (lippmann@rbg.informatik.tu-darmstadt.de)
+--- latex2html-2002-2-1/l2hconf.pin.shell	2005-03-13 19:10:43.353432088 +0100
++++ latex2html-2002-2-1/l2hconf.pin	2005-03-13 19:10:43.353432088 +0100
+@@ -1,4 +1,4 @@
+-#!/perl
++#!/usr/bin/perl
+ # LaTeX2HTML l2hconf.pm
+ # $Id: l2hconf.pin,v 1.17 2002/06/15 22:46:36 RRM Exp $
+ 
