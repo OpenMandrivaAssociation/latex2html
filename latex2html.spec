@@ -3,7 +3,7 @@
 Name: 		latex2html
 Summary: 	LaTeX to HTML converter
 Version: 	2008
-Release: 	6
+Release: 	10
 License: 	GPLv2+
 Group: 		Publishing
 URL: 		http://www.latex2html.org
@@ -70,6 +70,11 @@ install -m 755 latex2html %{buildroot}%{_bindir}
 install -m 755 pstoimg %{buildroot}%{_bindir}
 install -m 755 texexpand %{buildroot}%{_bindir}
 
+rm -f L2hos/Win32.pm
+rm -f L2hos/Dos.pm
+rm -f L2hos/Mac.pm
+rm -f L2hos/OS2.pm
+
 cp -avRf IndicTeX-HTML %{buildroot}%{latex2htmldir}/
 cp -avRf L2hos.pm %{buildroot}%{latex2htmldir}/
 cp -avRf L2hos %{buildroot}%{latex2htmldir}/
@@ -100,12 +105,6 @@ perl -pi -e 's#/usr/local/bin/perl#%{__perl}#' %{buildroot}%{_prefix}/lib/latex2
 perl -pi -e 's#/usr/local/bin/perl#%{__perl}#' %{buildroot}%{_prefix}/lib/latex2html/makeseg/makeseg
 perl -pi -e 's#/usr/local/bin/perl#%{__perl}#' %{buildroot}%{latex2htmldir}/makemap
 
-# remove stuff we don't need (but that fills up the harddisk
-# and adds dependencies anyway)
-rm -f	%buildroot%_prefix/lib/latex2html/L2hos/Win32.pm \
-	%buildroot%_prefix/lib/latex2html/L2hos/DOS.pm \
-	%buildroot%_prefix/lib/latex2html/L2hos/Mac.pm \
-	%buildroot%_prefix/lib/latex2html/L2hos/OS2.pm
 
 # fix some installation path
 perl -pi -e "s#%{_builddir}/%{name}-%{compactversion}#%{latex2htmldir}#" \
@@ -147,4 +146,63 @@ exit 0
 %{_datadir}/texmf/tex/latex/html/
 %{_docdir}/%{name}-%{version}
 
+
+
+
+%changelog
+* Mon Mar 26 2012 Bernhard Rosenkraenzer <bero@bero.eu> 2008-6
++ Revision: 787037
+- Add BuildRequires: netpbm to make sure PNG+GIF support is detected
+
+* Mon Mar 26 2012 Bernhard Rosenkraenzer <bero@bero.eu> 2008-5
++ Revision: 787022
+- Fix compatibility with perl 5.14
+- Remove some unneeded files
+- Fix build with current rpm
+- Clean up spec file
+
+* Sun May 15 2011 Oden Eriksson <oeriksson@mandriva.com> 2008-4
++ Revision: 674845
+- fix deps
+- mass rebuild
+
+* Mon Mar 15 2010 Oden Eriksson <oeriksson@mandriva.com> 2008-3mdv2011.0
++ Revision: 520138
+- rebuilt for 2010.1
+
+* Wed Sep 02 2009 Christophe Fergeau <cfergeau@mandriva.com> 2008-2mdv2010.0
++ Revision: 425501
+- rebuild
+
+* Mon Dec 29 2008 Emmanuel Andry <eandry@mandriva.org> 2008-1mdv2009.1
++ Revision: 321225
+- New version 2008
+- fix old X11 path in configure options
+- fix license
+
+* Fri Dec 21 2007 Olivier Blin <blino@mandriva.org> 2002-13mdv2009.0
++ Revision: 136535
+- restore BuildRoot
+
+* Mon Dec 17 2007 Thierry Vignaud <tv@mandriva.org> 2002-13mdv2008.1
++ Revision: 128338
+- kill re-definition of %%buildroot on Pixel's request
+
+
+* Thu Mar 01 2007 Giuseppe GhibÃ² <ghibo@mandriva.com> 2002-13mdv2007.0
++ Revision: 130671
+- Use %%mkrel.
+- Import latex2html
+
+* Sat Mar 19 2005 Giuseppe Ghibò <ghibo@mandrakesoft.com> 2002-12mdk
+- Added Patch7, for html.sty from latex2html author.
+
+* Sat Mar 12 2005 Giuseppe Ghibò <ghibo@mandrakesoft.com> 2002-11mdk
+- latex2html-2002-2-1 (25-Oct-2004).
+- removed \\address{...} usage in documentation (Patch3).
+- Let latex/pdflatex checking in html.sty more robust (Patch4).
+- Added Patch5 because 'gs -h' outputs to stderr.
+
+* Sat Aug 28 2004 Giuseppe Ghibò <ghibo@mandrakesoft.com> 2002-10mdk
+- Rebuilt.
 
