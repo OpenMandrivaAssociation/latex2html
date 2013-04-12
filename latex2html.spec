@@ -2,12 +2,12 @@
 
 Name: 		latex2html
 Summary: 	LaTeX to HTML converter
-Version: 	2008
-Release: 	10
+Version: 	2012
+Release: 	1
 License: 	GPLv2+
 Group: 		Publishing
 URL: 		http://www.latex2html.org
-Source: 	http://saftsack.fs.uni-bayreuth.de/~latex2ht/current/%{name}-%{version}.tar.gz
+Source: 	http://mirrors.ctan.org/support/latex2html/%{name}-%{version}.tgz
 Patch0:		%{name}-2002-gsfonts.patch
 Patch1:		%{name}-%{compactversion}-path.patch
 Patch2:		%{name}-perlversion.patch
