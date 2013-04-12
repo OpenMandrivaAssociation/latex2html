@@ -16,7 +16,6 @@ Patch4:		%{name}-pdfoutput.patch
 Patch5:		%{name}-gs-stderr.patch
 Patch6:		%{name}-perlcall.patch
 Patch7:		%{name}-htmladdimg.patch
-Patch8:		latex2html-2008-perl-5.14.patch
 Requires:	ghostscript >= 6.50
 Requires:	giftrans
 Requires:	netpbm
@@ -45,7 +44,6 @@ to process images and equations.
 %patch5 -p1 -b .stderr
 %patch6 -p1 
 %patch7 -p1
-%patch8 -p1 -b .p514~
 
 %build
 TMP=/var/tmp ./configure \
