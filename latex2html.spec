@@ -115,15 +115,15 @@ perl -pi -e "s#%{_datadir}/lib/latex2html#%{latex2htmldir}#" \
 rm -f floatflt.ins latin9.def url.sty
 )
 
-(cd docs 
-rm -f changebar.sty url.sty
-TEXINPUTS=.:../texinputs:
-export TEXINPUTS
-latex manual
-latex manual
-latex manual
-dvipdf manual.dvi
-install -m 644 manual.pdf %{buildroot}%{_defaultdocdir}/%{name}-%{version})
+#(cd docs 
+#rm -f changebar.sty url.sty
+#TEXINPUTS=.:../texinputs:
+#export TEXINPUTS
+#latex manual
+#latex manual
+#latex manual
+#dvipdf manual.dvi
+#install -m 644 manual.pdf %{buildroot}%{_defaultdocdir}/%{name}-%{version})
 
 %clean
 rm -rf %{buildroot}
