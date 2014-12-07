@@ -4,7 +4,7 @@
 Summary:	LaTeX to HTML converter
 Name:		latex2html
 Version:	2012
-Release:	7
+Release:	8
 License:	GPLv2+
 Group:		Publishing
 Url:		http://www.latex2html.org
