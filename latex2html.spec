@@ -4,7 +4,7 @@
 Summary:	LaTeX to HTML converter
 Name:		latex2html
 Version:	2012
-Release:	9
+Release:	10
 License:	GPLv2+
 Group:		Publishing
 Url:		http://www.latex2html.org
@@ -19,7 +19,9 @@ Patch6:		%{name}-perlcall.patch
 Patch7:		%{name}-htmladdimg.patch
 BuildArch:	noarch
 BuildRequires:	tetex-dvips
-BuildRequires:	tetex-latex ghostscript
+BuildRequires:	tetex-latex
+BuildRequires:	texlive-latex-bin
+BuildRequires:	ghostscript
 BuildRequires:	ghostscript-dvipdf
 BuildRequires:	netpbm
 Requires:	ghostscript >= 6.50
@@ -28,6 +30,7 @@ Requires:	netpbm
 Requires:	perl >= 5.004
 Requires:	tetex-latex >= 1.0.7
 Requires:	tetex-dvips >= 1.0.7
+Requires:	texlive-latex-bin
 
 %description
 Elaborate perl program to convert latex documents to html, using LaTeX
