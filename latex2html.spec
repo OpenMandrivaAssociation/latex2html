@@ -18,6 +18,7 @@ Patch5:		%{name}-gs-stderr.patch
 Patch6:		%{name}-perlcall.patch
 Patch7:		%{name}-htmladdimg.patch
 BuildArch:	noarch
+BuildRequires:	perl(L2hos)
 BuildRequires:	tetex-dvips
 BuildRequires:	tetex-latex
 BuildRequires:	texlive-latex-bin
