@@ -39,7 +39,7 @@ to process images and equations.
 
 %prep
 %setup -q 
-%apply_patches
+%autopatch -p1
 
 %build
 TMP=/var/tmp ./configure \
