@@ -2,7 +2,7 @@
 
 Summary: Converts LaTeX documents to HTML
 Name: latex2html
-Version:	2020
+Version:	2021
 Release:	1
 License: GPLv2+
 URL: https://github.com/latex2html/latex2html/releases
@@ -12,10 +12,9 @@ Source1: cfgcache.pm
 Source2: %{name}-manpages.tar.gz
 # support for Japanese
 # http://takeno.iee.niit.ac.jp/~shige/TeX/latex2html/
-Source3: http://takeno.iee.niit.ac.jp/~shige/TeX/latex2html/data2/l2h-2018.2-jp20190902.tar.gz
+Source3: http://takeno.iee.niit.ac.jp/~shige/TeX/latex2html/data2/l2h-2020-jp20200515.tar.gz
 Patch1: latex2html-2018.2-teTeX-l2h-config.patch
 Patch4: latex2html-2002-2-1-SHLIB.patch
-Patch5: latex2html-2002-2-1-gsfont.patch
 
 Requires:       ghostscript >= 6.50
 Requires:       giftrans
@@ -48,9 +47,6 @@ pushd %{name}-%{version}
 
 # fix SHLIBDIR
 %patch4 -p1 -b .shlib
-
-# don't require the font directory to be ended with PATH/fonts
-%patch5 -p1 -b .gsfont
 
 # remove all platforms we don't need
 for i in Dos Mac OS2 Win32; do
