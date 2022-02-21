@@ -2,7 +2,7 @@
 
 Summary: Converts LaTeX documents to HTML
 Name: latex2html
-Version:	2021
+Version:	2022
 Release:	1
 License: GPLv2+
 URL: https://github.com/latex2html/latex2html/releases
