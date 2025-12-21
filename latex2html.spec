@@ -24,6 +24,11 @@ Requires:       tetex-latex >= 1.0.7
 Requires:       tetex-dvips >= 1.0.7
 Requires:       texlive-latex-bin
 
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires: perl-interpreter >= 5.003, ghostscript >= 4.03, netpbm >= 9.21
 BuildRequires: tetex-dvips
 BuildRequires: tetex-latex
