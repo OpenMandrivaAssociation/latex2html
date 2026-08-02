@@ -2,7 +2,7 @@
 
 Summary: Converts LaTeX documents to HTML
 Name: latex2html
-Version:	2023.2
+Version:	2026
 Release:	1
 License: GPLv2+
 URL: https://github.com/latex2html/latex2html/releases
@@ -48,10 +48,10 @@ pages are generated from a single LATEX source.
 
 pushd %{name}-%{version}
 # Patch from Oliver Paukstadt <oliver.paukstadt@millenux.com>
-%patch1 -p2 -b .config
+%patch -P1 -p1 -b .config
 
 # fix SHLIBDIR
-%patch4 -p1 -b .shlib
+%patch -P4 -p1 -b .shlib
 
 # remove all platforms we don't need
 for i in Dos Mac OS2 Win32; do
